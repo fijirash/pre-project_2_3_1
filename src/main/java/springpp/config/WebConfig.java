@@ -1,5 +1,6 @@
 package springpp.config;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -16,9 +17,10 @@ import org.thymeleaf.spring5.view.ThymeleafViewResolver;
 @ComponentScan("springpp")
 public class WebConfig implements WebMvcConfigurer {
 
-    private final ApplicationContext applicationContext;
+    private ApplicationContext applicationContext;
 
-    public WebConfig(ApplicationContext applicationContext) {
+    @Autowired
+    public void setApplicationContext(ApplicationContext applicationContext) {
         this.applicationContext = applicationContext;
     }
 
